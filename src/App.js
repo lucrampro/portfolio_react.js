@@ -13,13 +13,18 @@ import img_lr from './img/lr.png'
 
 // React app
 class App extends React.Component{
-  // animation menu 
-  animationMenu = () => {
-    var toto = true
+// constructor
+  constructor(props) {
+    super(props)
+    this.state = { toto: true };
+  }
+// animation menu 
+  animationMenu = (e) => {
+    
     var tl = new TimelineMax();
     var menu = '.wrapper__menu'
 
-if(toto){
+if(this.toto === false){
   tl.set(menu,{
     height: '100vh'
   })
@@ -39,9 +44,10 @@ if(toto){
     opacity: 1,
     ease: "Expo.easeInOut"
   },0.1,"test+=0.2")
-   setTimeout(toto = !toto, 900)
+   this.toto = !this.toto
+   
 } 
-else if(!toto){
+else {
   tl.staggerTo('.menu ul li', 0.3, {
     y: '-100px',
     opacity: 0,
@@ -50,24 +56,23 @@ else if(!toto){
   .to('.right',0.2,{
     height: 0,
     ease: "Expo.easeInOut"
-  })
+  },"test")
   .to('.left',0.2,{
     height: 0,
     ease: "Expo.easeInOut"
-  },"+=0.1")
+  },"test+=0.1")
   .set(menu,{
     height: 0
   })
-  setTimeout(toto = !toto, 900)
-  console.log('je passe dans le else')
+  this.toto = !this.toto
 }
-console.log(toto)
+console.log(this.toto)
   }
 
   // component did mount
 
   componentDidMount(){
-    // animation home 
+// animation home 
     var tl = new TimelineMax();
 
     setTimeout( () => { 
@@ -131,7 +136,6 @@ console.log(toto)
       }
     }
   }
-  
       // fin du set time
      }, 500)
     }
