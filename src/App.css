@@ -1,0 +1,189 @@
+/* FONTS */
+
+ @font-face {
+  font-family: "gothamBook";
+  src: url("../src/fonts/gothamBook.woff2") format("woff2"), url("../src/fonts/gothamBook.woff") format("woff");
+}
+
+@font-face {
+  font-family: "gothamBold";
+  src: url("../src/fonts/gothamBold.woff2") format("woff2"), url("../src/fonts/gothamBold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "didotBold";
+  src: local('didotBold'),url("../src/fonts/didotbold.woff2") format("woff2"), url("../src/fonts/didotbold.woff") format("woff");
+} 
+/* STYLE */
+body{
+  position: relative;
+  overflow-x: hidden;
+  font-family: 'gothamBook';
+}
+/* WRAPPER QUI ENGLOBE TOUT */
+.wrapper__all{
+  max-width: 80vw;
+  margin: auto;
+}
+.button__burger{
+  position: fixed;
+  right: 25px;
+  top: 25px;
+  z-index: 99;
+  height: 50px;
+  width: 50px;
+}
+
+.button__burger .trait{
+  height: 1px;
+  width: 100%;
+  background-color: #000000;
+  margin-top: 10px;
+}
+
+/* MENU */
+.wrapper__menu{
+  position: fixed;
+  height: 0%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 98;
+}
+.menu {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.menu .left{
+  position: absolute;
+  bottom: 0;
+  width: 50%;
+  height: 0;
+  left: 0;
+  background-color: #030303;
+}
+.menu .right{
+  position: absolute;
+  bottom: 0;
+  width: 50%;
+  height: 0;
+  right: 0;
+  background-color: #030303;
+}
+.menu ul{
+  color: #fefefe;
+  font-family: "didotBold";
+  z-index: 2;
+}
+.menu ul li{
+  list-style: none;
+  font-size: 5rem;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+/* HOME */
+.wrapper__home{
+  overflow: hidden;
+  min-height: 100vh;
+  width: 100%;
+}
+.home__img{
+  position: relative;
+  overflow: hidden;
+  margin-top: 20vh;
+  max-width: 600px;
+}
+.logo__lr{
+  max-width: 600px;
+  opacity:0;
+}
+.wrapper__logo{
+  position: absolute;
+  right: 0;
+  top: 0;
+  max-width: 500px;
+  opacity: 0;
+}
+.wrapper__logo img{
+  width: 100%;
+  transform: rotate(15deg) translate(240px, -180px);
+}
+.home__text{
+  position: relative;
+  max-width: 300px ;
+  overflow: hidden;
+  margin-top: 5px;
+}
+
+.home__text p{
+  opacity:0;
+}
+.black{
+  position: absolute;
+  height: 10%;
+  width: 0;
+  background-color: #030303;
+  top: 50%;
+  left: 0;
+}
+/* ABOUT */
+
+.wrapper__about{
+  padding-top: 50px;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+.wrapper__about h2{
+  font-family: 'didotBold';
+  font-size: 3rem;
+  text-align-last: left;
+  position: relative;
+  overflow: hidden;
+}
+.autor{
+  display: block;
+  font-family: 'gothamBold';
+  font-size: 1rem;
+  color: grey;
+}
+.wrapper__about p{
+  max-width: 50%;
+  position:relative;
+  overflow: hidden;
+}
+.skill {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  
+}
+.skill ul{
+  font-family: "gothamBold";
+  padding: 0;
+  margin-right: 20px;
+}
+.skill ul li{
+  list-style: none;
+  font-family: "gothamBook";
+  font-size: 12px;
+  margin-top: 5px;
+}
+.wrapper__about img{
+  position: absolute;
+  max-width: 300px;
+  right: 0;
+  top: 30vh;
+}
+.wrapper__about .black{
+  top: 0;
+  height: 100%; 
+}
+
