@@ -1,5 +1,6 @@
 // import React, {useEffect, useRef} from 'react';
 import React from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 // css
 import './App.css'
 // component enfant
@@ -16,15 +17,15 @@ class App extends React.Component{
 // constructor
   constructor(props) {
     super(props)
-    this.state = { toto: true };
+    this.state = { menuCheack: true };
   }
 // animation menu 
-  animationMenu = (e) => {
+  animationMenu = () => {
     
     var tl = new TimelineMax();
     var menu = '.wrapper__menu'
 
-if(this.toto === false){
+if(this.menuCheack === true){
   tl.set(menu,{
     height: '100vh'
   })
@@ -36,15 +37,16 @@ if(this.toto === false){
     height: '100vh',
     ease: "Expo.easeInOut"
   },"test+=0.1")
-  .staggerTo('.button__burger .trait',0.1,{
+  .staggerTo('.button__burger div',0.1,{
     backgroundColor: 'white'
-  })
+  },0.2)
   .staggerTo('.menu ul li', 0.5, {
     y:0,
     opacity: 1,
     ease: "Expo.easeInOut"
   },0.1,"test+=0.2")
-   this.toto = !this.toto
+  //  this.menu = !this.menu
+    this.menuCheack = !this.menuCheack
    
 } 
 else {
@@ -61,16 +63,17 @@ else {
     height: 0,
     ease: "Expo.easeInOut"
   },"test+=0.1")
+  .staggerTo('.button__burger div',0.1,{
+    backgroundColor: 'black'
+  },0.2)
   .set(menu,{
     height: 0
   })
-  this.toto = !this.toto
-}
-console.log(this.toto)
+this.menuCheack = !this.menuCheack
   }
-
+  console.log(this.menuCheack)
+  }
   // component did mount
-
   componentDidMount(){
 // animation home 
     var tl = new TimelineMax();
@@ -104,7 +107,9 @@ console.log(this.toto)
         y: '20%'
       })
       TweenMax.set('.wrapper__about img',{
-        opacity:0
+        opacity:0,
+        x:'100%',
+        scale:0.9
       })
       var revealLimit = 500
       window.addEventListener('scroll', animationOnScroll)
@@ -117,11 +122,11 @@ console.log(this.toto)
 
       var tl = new TimelineMax();
       
-      tl.staggerTo('.wrapper__about h2 .black, .wrapper__about p .black', 0.2,{
+      tl.staggerTo('.wrapper__about h2 .black, .wrapper__about p .black', 0.3,{
         width: '100%',
         ease: "Expo.easeInOut"
       },0.2)
-      .staggerTo('.wrapper__about h2 .black, .wrapper__about p .black', 0.2,{
+      .staggerTo('.wrapper__about h2 .black, .wrapper__about p .black', 0.3,{
         left: '100%',
         ease: "Expo.easeInOut"
       },0.2, "go")
@@ -129,21 +134,31 @@ console.log(this.toto)
         opacity: 1,
         y: '0%',
         ease: "Expo.easeInOut"
-      },0.1, "go+=0.3")
+      },0.05, "go+=0.1")
       .to('.wrapper__about img', 0.2,{
-        opacity: 1
+        opacity: 1,
+        x:"0%",
+      },"go+=0.1")
+      .to('.wrapper__about img', 3,{
+        scale:1,
+        ease: "Expo.easeInOut"
       })
       }
     }
   }
       // fin du set time
      }, 500)
+
     }
+
   // render
   render() {
     return(
         <div className="wrapper__all">
+          <Router>
           <Menu />
+          <Route path="/" exact component={App} />
+          </Router>
           <div onClick={this.animationMenu} className="button__burger">
             <div className="trait"></div>
             <div className="trait"></div>
